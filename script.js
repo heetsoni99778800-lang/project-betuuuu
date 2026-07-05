@@ -76,7 +76,10 @@ function startLuxuryGiftScene() {
     }
 
     setTimeout(() => gift.classList.add('open'), 1700);
-    setTimeout(() => crystal.classList.add('show'), 2600);
+    setTimeout(() => {
+    crystal.classList.add('show');
+    celebrate();
+}, 2600);
     setTimeout(() => prompt.classList.add('show'), 3800);
 }
 
@@ -85,20 +88,31 @@ function playMemoryVoice() {
     const prompt = document.getElementById('memory-prompt');
     const voiceMagic = document.getElementById('voice-magic');
 
-    if (prompt) prompt.classList.remove('show');
-    if (voiceMagic) voiceMagic.classList.add('show');
-
     if (!voice) {
-        showGiftLetterAfterVoice();
+        alert("Voice audio element not found.");
         return;
     }
 
-    voice.currentTime = 0;
-    voice.play().catch(() => showGiftLetterAfterVoice());
+    if (prompt) prompt.classList.remove('show');
 
-    voice.onended = () => {
-        setTimeout(showGiftLetterAfterVoice, 1000);
-    };
+    if (voiceMagic) {
+        voiceMagic.classList.add('show');
+        voiceMagic.innerHTML = "<p>Just listen... 🥹</p>";
+    }
+
+    voice.currentTime = 0;
+
+    voice.play()
+        .then(() => {
+            voice.onended = () => {
+                setTimeout(showGiftLetterAfterVoice, 1000);
+            };
+        })
+        .catch(() => {
+            if (voiceMagic) {
+                voiceMagic.innerHTML = "<p>Voice note could not play 😭<br>Try converting it to MP3 if this still happens.</p>";
+            }
+        });
 }
 
 function showGiftLetterAfterVoice() {
@@ -325,3 +339,29 @@ if (toggler && track && eqAnim) {
 window.addEventListener('DOMContentLoaded', () => {
     goToScreen(1);
 });
+// ===== PREMIUM CONFETTI =====
+function celebrate() {
+
+    confetti({
+        particleCount: 180,
+        spread: 100,
+        origin: { y: 0.6 }
+    });
+
+    setTimeout(() => {
+        confetti({
+            particleCount: 120,
+            angle: 60,
+            spread: 80,
+            origin: { x: 0 }
+        });
+
+        confetti({
+            particleCount: 120,
+            angle: 120,
+            spread: 80,
+            origin: { x: 1 }
+        });
+    }, 400);
+
+}

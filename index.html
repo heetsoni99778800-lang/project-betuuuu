@@ -53,7 +53,7 @@
 
         <div id="memory-prompt" class="memory-prompt">
             <p>Wait... Do you recognize this little voice? 💖</p>
-          <button onclick="playMemoryVoice()">▶ Play Memory</button>
+            <button onclick="playMemoryVoice()">▶ Play Memory</button>
         </div>
 
         <div id="voice-magic" class="voice-magic">
@@ -70,7 +70,7 @@
             <button class="next-page-btn" onclick="goToScreen(3)">Continue ❤️</button>
         </div>
 
-       <audio id="memory-voice" src="music/her-voice.mp3.aac"></audio>
+        <audio id="memory-voice" src="music/her-voice.mp3" preload="auto"></audio>
     </section>
 
     <section id="screen-3" class="screen">
@@ -234,6 +234,7 @@
     </section>
 
     <footer class="secret-footer">Every line of this website was made with memories, smiles, and lots of care. ❤️</footer>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
