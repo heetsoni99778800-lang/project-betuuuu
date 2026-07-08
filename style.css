@@ -460,11 +460,9 @@ button:hover, button:active {
 .welcome-hearts span,
 .floating-scene-hearts span {
     position: absolute;
-    font-size: 32px;
-    opacity: 0.9;
-    filter: drop-shadow(0 0 12px rgba(255,105,180,.8));
-    animation: floatHeart 8s linear infinite;
-    transition: transform .3s ease;
+    font-size: 24px;
+    opacity: 0.65;
+    animation: floatHeart 6s linear infinite;
 }
 
 .welcome-hearts span:nth-child(1),
@@ -480,27 +478,9 @@ button:hover, button:active {
 .floating-scene-hearts span:nth-child(4) { right: 10%; bottom: 18%; animation-delay: 3.7s; }
 
 @keyframes floatHeart {
-    0% {
-        transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 0.9;
-    }
-
-    50% {
-        transform: translateY(-35vh) translateX(-20px) rotate(-8deg) scale(1);
-    }
-
-    75% {
-        transform: translateY(-55vh) translateX(20px) rotate(8deg) scale(1.1);
-    }
-
-    100% {
-        transform: translateY(-80vh) translateX(0) rotate(0deg) scale(1.2);
-        opacity: 0;
-    }
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    20% { opacity: 0.75; }
+    100% { transform: translateY(-70vh) scale(1.15); opacity: 0; }
 }
 
 .gift-spotlight {
@@ -590,14 +570,14 @@ button:hover, button:active {
     opacity: 0.95;
 }
 
- .crystal-heart {
+.crystal-heart {
     position: absolute;
     font-size: 62px;
     opacity: 0;
     transform: translateY(40px) scale(0.6);
     filter: drop-shadow(0 0 18px var(--pink-glow));
     z-index: 5;
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 1s ease;
 }
 
 .crystal-heart.show {
@@ -605,23 +585,7 @@ button:hover, button:active {
 }
 
 @keyframes riseCrystal {
-    0% {
-        opacity: 0;
-        transform: translateY(40px) scale(0.6);
-        filter: drop-shadow(0 0 8px rgba(255,105,180,0.3));
-    }
-
-    60% {
-        opacity: 1;
-        transform: translateY(-90px) scale(1.08);
-        filter: drop-shadow(0 0 25px rgba(255,105,180,0.9));
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(-105px) scale(1);
-        filter: drop-shadow(0 0 35px rgba(255,105,180,1));
-    }
+    to { opacity: 1; transform: translateY(-105px) scale(1); }
 }
 
 .memory-prompt,

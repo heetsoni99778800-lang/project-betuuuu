@@ -76,10 +76,7 @@ function startLuxuryGiftScene() {
     }
 
     setTimeout(() => gift.classList.add('open'), 1700);
-    setTimeout(() => {
-    crystal.classList.add('show');
-    celebrate();
-}, 2600);
+    setTimeout(() => crystal.classList.add('show'), 2600);
     setTimeout(() => prompt.classList.add('show'), 3800);
 }
 
@@ -339,29 +336,3 @@ if (toggler && track && eqAnim) {
 window.addEventListener('DOMContentLoaded', () => {
     goToScreen(1);
 });
-// ===== PREMIUM CONFETTI =====
-function celebrate() {
-
-    confetti({
-        particleCount: 180,
-        spread: 100,
-        origin: { y: 0.6 }
-    });
-
-    setTimeout(() => {
-        confetti({
-            particleCount: 120,
-            angle: 60,
-            spread: 80,
-            origin: { x: 0 }
-        });
-
-        confetti({
-            particleCount: 120,
-            angle: 120,
-            spread: 80,
-            origin: { x: 1 }
-        });
-    }, 400);
-
-}
